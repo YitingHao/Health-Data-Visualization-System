@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="description">
+    <%= render 'layouts/shim' %>
+  </head>
+  <body>
+	  <div id="header" class="ui-layout-north ui-widget-content">
+	  	<%= render 'layouts/header' %>
+	  </div>
+	  <%= yield %>
+	  <div id="footer" class="ui-layout-south ui-widget-content">
+		  <%= render 'layouts/footer' %>
+	  </div>
+  </body>
+</html>

@@ -1,0 +1,212 @@
+<h3>
+	<a href="#">
+		<span class="glyphicon glyphicon-check"></span>
+		Visualizations
+	</a>
+</h3>
+<div>
+	<ul id="vis-select">
+		<li>
+			<div class="vis-header">
+				<button target="#association_container" title="Associations Graph" vis="association" class="btn btn-default btn-xs">
+					<span class="glyphicon glyphicon-new-window"></span>
+				</button>
+				<span class="glyphicon glyphicon-eye-open"></span>
+				Associations
+			</div>
+			<div class="vis-body">
+				<img src="/assets/associations_screenshot.png"/>
+			</div>
+		</li>
+
+		<li>
+			<div class="vis-header">
+				<button target="#angular_container" title="Ring Graph" vis="angular" class="btn btn-default btn-xs">
+					<span class="glyphicon glyphicon-new-window"></span>
+				</button>
+				<span class="glyphicon glyphicon-eye-open"></span>
+				Ring Graph
+			</div>
+			<div class="vis-body">
+				<img src="/assets/angular_screenshot.png"/>
+			</div>
+		</li>
+
+		<li>
+			<div class="vis-header">
+				<button target="#themeRiver_container" title="Theme River" vis="diseasestream" class="btn btn-default btn-xs">
+					<span class="glyphicon glyphicon-new-window"></span>
+				</button>
+				<span class="glyphicon glyphicon-eye-open"></span>
+				Theme River
+			</div>
+			<div class="vis-body">
+				<img src="/assets/theme_river_screenshot.png"/>
+			</div>
+		</li>
+
+		<li>
+			<div class="vis-header">
+				<button target="#mapOverlay_container" title="Spatial Temporal Graph" vis="chloropleth" class="btn btn-default btn-xs">
+					<span class="glyphicon glyphicon-new-window"></span>
+				</button>
+				<span class="glyphicon glyphicon-eye-open"></span>
+				Spatial Temporal
+			</div>
+			<div class="vis-body">
+				<img src="/assets/map.png"/>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<h3>
+	<a href="#">
+		<span class="glyphicon glyphicon-filter"></span>
+		Filters
+	</a>
+	<a id="applyChanges" href="#">Apply Changes</a>
+</h3>
+<div id="filters">
+	<form id="filterForm">
+
+	<div class="control-row">
+		<h5>
+			<span class="glyphicon glyphicon-eye-open"></span> Visualization Options
+		</h5>
+		<div class="filter-list">
+			<p id="currentVisualizationOptions">
+				<i>None required for this visualization</i>
+			</p>
+		</div>
+	</div>
+
+	<div class="control-row">
+		<div class="search">
+			<h5>
+				<span class="glyphicon glyphicon-search"></span> Diseases
+			</h5>
+			<div class="filter-list">
+				<p>
+					<input class="autocomplete" type="text" name="disease" id="disease" placeholder="Search ..."/>
+					<input type="hidden" name="diseases"/>
+				</p>
+				<ul id="selectedDiseases">
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="control-row">
+		<h5>
+			<span class="glyphicon glyphicon-file"></span> Disease Source
+			<span class="selectAllNone">
+				(<a class="selectAll" href="#">All</a> | <a class="selectNone" href="#">None</a>)
+			</span>
+		</h5>
+		<div id="diseasetags" class="filter-list">
+		</div>
+	</div>
+
+	<div class="control-row">
+		<div class="calendar">
+			<h5>
+				<span class="glyphicon glyphicon-calendar"></span> Dates
+			</h5>
+			<div class="right-aligned">
+				<p>
+					<label>From</label>
+					<input class="datepicker" type="text" name="startDate" id="startDate"
+						   value="<%= @first_occurrence.occurrence_date %>"/>
+				</p>
+				<p>
+					<label>To</label>
+					<input class="datepicker" type="text" name="endDate" id="endDate"
+						   value="<%= @last_occurrence.occurrence_date %>"/>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="control-row">
+		<h5>
+			<span class="glyphicon glyphicon-user"></span> Gender
+			<span class="selectAllNone">
+				(<a class="selectAll" href="#">All</a> | <a class="selectNone" href="#">None</a>)
+			</span>
+		</h5>
+		<div class="filter-list">
+			<p>
+				<label for="genderM">
+					<input id="genderM" type='checkbox' name='gender[]' value='M' checked="checked"/>
+					Male
+				</label>
+			</p>
+			<p>
+				<label for="genderF">
+					<input id="genderF" type='checkbox' name='gender[]' value='F' checked="checked"/>
+					Female
+				</label>
+			</p>
+		</div>
+	</div>
+
+	<div class="control-row">
+		<h5>
+			<span class="glyphicon glyphicon-user"></span> Race / Ethnicity
+			<span class="selectAllNone">
+				(<a class="selectAll" href="#">All</a> | <a class="selectNone" href="#">None</a>)
+			</span>
+		</h5>
+
+		<div class="filter-list">
+			<p>
+				<label for="raceA">
+					<input name="race[]" id='raceA' value="A" type='checkbox' checked="checked"/>
+					Asian / Hawaiian / Pacific Islander
+				</label>
+			</p>
+			<p>
+				<label for="raceB">
+					<input name="race[]" id='raceB' value="B" type='checkbox' checked="checked"/>
+					Black / African American (Non-Hispanic)
+				</label>
+			</p>
+			<p>
+				<label for="raceH">
+					<input name="race[]" id='raceH' value="H" type='checkbox' checked="checked"/>
+					Hispanic
+				</label>
+			</p>
+			<p>
+				<label for="raceW">
+					<input name="race[]" id='raceW' value="W" type='checkbox' checked="checked"/>
+					White (Non-Hispanic)
+				</label>
+			</p>
+			<p>
+				<label for="raceX">
+					<input name="race[]" id='raceX' value="X" type='checkbox' checked="checked"/>
+					Other
+				</label>
+			</p>
+			<p>
+				<label for="raceU">
+					<input name="race[]" id='raceU' value="U" type='checkbox' checked="checked"/>
+					Unspecified
+				</label>
+			</p>
+		</div>
+	</div>
+	</form>
+</div>
+<h3>
+	<a href="#">
+		<span class="glyphicon glyphicon-save"></span>
+		Saved Figures
+	</a>
+</h3>
+<div>
+	<ul id="listOfSavedFigures">
+	</ul>
+</div>
